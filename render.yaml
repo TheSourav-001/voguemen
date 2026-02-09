@@ -39,9 +39,4 @@ services:
         source: /*
         destination: /index.html
 
-# PostgreSQL Database
-databases:
-  - name: voguemen-db
-    plan: free
-    databaseName: voguemen
-    user: voguemen_user
+# Uses existing voguemen-db PostgreSQL database
