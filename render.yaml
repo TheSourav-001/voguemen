@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: voguemen-api
+    env: node
+    buildCommand: cd server && npm install && npm run build
+    startCommand: cd server && npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: voguemen-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: https://your-frontend-link.vercel.app
+
+databases:
+  - name: voguemen-db
+    plan: free
+    databaseName: voguemen
+    user: voguemen_user

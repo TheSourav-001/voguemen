@@ -1,0 +1,8 @@
+
+{
+  "name": "VogueMen - Ultra-Luxury Fashion",
+  "description": "A billion-dollar vision for men's fashion e-commerce. Editorial UI, cinematic animations, and premium South Asian craftsmanship.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
