@@ -3,3 +3,14 @@ node_modules
 .env
 
 /generated/prisma
+
+# SQLite database files (development only)
+*.sqlite
+*.sqlite3
+*.db
+prisma/dev.db
+prisma/dev.db-journal
+
+# Uploads folder (use cloud storage in production)
+uploads/*
+!uploads/.gitkeep
