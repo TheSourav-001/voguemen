@@ -25,7 +25,6 @@ services:
   - type: web
     name: voguemen
     env: static
-    plan: free
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     envVars:
