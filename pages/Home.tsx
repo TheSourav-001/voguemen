@@ -260,7 +260,7 @@ export const Home: React.FC = () => {
               <li className="flex items-center gap-4"><div className="w-3 h-3 bg-primary rounded-full" /> Ethically sourced raw materials</li>
               <li className="flex items-center gap-4"><div className="w-3 h-3 bg-primary rounded-full" /> Customized fit for Asian silhouettes</li>
             </ul>
-            <AnimatedButton variant="secondary" className="px-12 py-4">Our Craft Journey</AnimatedButton>
+            <AnimatedButton variant="secondary" className="px-12 py-4" onClick={() => navigate('/craft-journey')}>Our Craft Journey</AnimatedButton>
           </motion.div>
         </div>
       </section>

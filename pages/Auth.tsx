@@ -139,6 +139,19 @@ export const Auth: React.FC = () => {
               >
                 {isLoading ? "PLEASE WAIT..." : (isLogin ? "Continue To Atelier" : "Register Now")}
               </AnimatedButton>
+
+              <div className="md:hidden mt-6 text-center">
+                <p className="text-xs font-bold text-charcoal/50 uppercase tracking-widest mb-3">
+                  {isLogin ? "New to VogueMen?" : "Already a Member?"}
+                </p>
+                <button
+                  onClick={() => setIsLogin(!isLogin)}
+                  className="text-primary font-black uppercase tracking-widest text-sm border-b-2 border-primary pb-1"
+                >
+                  {isLogin ? "Create Account" : "Sign In Here"}
+                </button>
+              </div>
+
             </motion.div>
           </AnimatePresence>
         </div>

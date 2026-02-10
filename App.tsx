@@ -18,7 +18,8 @@ import { Checkout } from './pages/Checkout';
 import { Lookbook } from './pages/Lookbook';
 import { Profile } from './pages/Profile';
 import { AtelierAI } from './components/AtelierAI';
-import { ArrowRight, Instagram, Facebook, Twitter } from 'lucide-react';
+import { CraftJourney } from './pages/CraftJourney';
+import { ArrowRight, Instagram, Facebook, Youtube, Linkedin } from 'lucide-react';
 
 const Footer: React.FC = () => (
   <footer className="bg-charcoal text-white pt-16 md:pt-24 pb-8 md:pb-12">
@@ -32,11 +33,18 @@ const Footer: React.FC = () => (
             Bangladesh's premier luxury atelier. We craft modern silhouettes using heritage fabrics for the global man.
           </p>
           <div className="flex gap-4">
-            {['FB', 'IG', 'YT', 'IN'].map(social => (
-              <button key={social} className="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center hover:bg-primary transition-all font-black text-[10px] md:text-xs group">
-                <span className="group-hover:scale-110 transition-transform">{social}</span>
-              </button>
-            ))}
+            <Link to="#" className="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center hover:bg-primary transition-all group text-white">
+              <Facebook size={20} className="group-hover:scale-110 transition-transform" />
+            </Link>
+            <Link to="#" className="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center hover:bg-primary transition-all group text-white">
+              <Instagram size={20} className="group-hover:scale-110 transition-transform" />
+            </Link>
+            <Link to="#" className="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center hover:bg-primary transition-all group text-white">
+              <Youtube size={20} className="group-hover:scale-110 transition-transform" />
+            </Link>
+            <Link to="#" className="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center hover:bg-primary transition-all group text-white">
+              <Linkedin size={20} className="group-hover:scale-110 transition-transform" />
+            </Link>
           </div>
         </div>
 
@@ -75,13 +83,16 @@ const Footer: React.FC = () => (
       </div>
 
       <div className="pt-8 md:pt-12 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
-        <p className="text-white/30 text-[10px] uppercase tracking-widest text-center md:text-left">
-          © 2024 VogueMen Bangladesh. All rights reserved.
-        </p>
+        <div className="text-center md:text-left">
+          <p className="text-white/30 text-[10px] uppercase tracking-widest mb-2">
+            © 2024 VogueMen Bangladesh. All rights reserved.
+          </p>
+          <p className="text-primary/60 text-[10px] uppercase tracking-[0.2em] font-black">
+            Developed by Sourav Dipto Apu
+          </p>
+        </div>
         <div className="flex items-center gap-6 md:gap-8">
-          <Link to="#" className="text-white/30 hover:text-white transition-colors"><Instagram size={18} /></Link>
-          <Link to="#" className="text-white/30 hover:text-white transition-colors"><Facebook size={18} /></Link>
-          <Link to="#" className="text-white/30 hover:text-white transition-colors"><Twitter size={18} /></Link>
+          <p className="text-white/20 text-[10px] uppercase tracking-widest">Verified by SSL</p>
         </div>
       </div>
     </div>
@@ -128,6 +139,7 @@ const AnimatedRoutes = () => {
               <Lookbook />
             </ProtectedRoute>
           } />
+          <Route path="/craft-journey" element={<CraftJourney />} />
           <Route path="/profile" element={isLoggedIn ? <Profile /> : <Auth />} />
           <Route path="*" element={<Home />} />
         </Routes>
