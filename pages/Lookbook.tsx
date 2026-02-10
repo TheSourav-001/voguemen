@@ -46,7 +46,7 @@ export const Lookbook: React.FC = () => {
                 <motion.h1
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-7xl md:text-9xl font-black text-charcoal uppercase tracking-tighter"
+                    className="text-4xl md:text-9xl font-black text-charcoal uppercase tracking-tighter"
                 >
                     THE <span className="text-primary">LOOKS</span>
                 </motion.h1>
@@ -67,25 +67,25 @@ export const Lookbook: React.FC = () => {
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-700" />
                         </div>
 
-                        <div className="lg:w-2/5 p-12 md:p-24 flex flex-col justify-center bg-offwhite">
+                        <div className="lg:w-2/5 p-6 md:p-24 flex flex-col justify-center bg-offwhite">
                             <motion.span
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
-                                className="text-primary/40 font-black text-6xl md:text-8xl mb-4 italic"
+                                className="text-primary/40 font-black text-4xl md:text-8xl mb-2 md:mb-4 italic"
                             >
                                 0{i + 1}
                             </motion.span>
                             <motion.h2
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter"
+                                className="text-3xl md:text-6xl font-black mb-4 md:mb-8 uppercase tracking-tighter"
                             >
                                 {look.title}
                             </motion.h2>
                             <motion.p
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
-                                className="text-charcoal/60 text-lg md:text-xl font-medium leading-relaxed mb-12"
+                                className="text-charcoal/60 text-base md:text-xl font-medium leading-relaxed mb-6 md:mb-12"
                             >
                                 {look.description}
                             </motion.p>

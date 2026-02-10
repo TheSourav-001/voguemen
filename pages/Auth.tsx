@@ -46,7 +46,7 @@ export const Auth: React.FC = () => {
       <div className="max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row border border-border">
 
         {/* Banner Side */}
-        <div className="md:w-1/2 bg-primary p-12 text-white flex flex-col justify-center relative overflow-hidden">
+        <div className="hidden md:flex md:w-1/2 bg-primary p-12 text-white flex-col justify-center relative overflow-hidden">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -67,7 +67,7 @@ export const Auth: React.FC = () => {
         </div>
 
         {/* Form Side */}
-        <div className="md:w-1/2 p-8 md:p-16">
+        <div className="w-full md:w-1/2 p-6 md:p-16">
           <AnimatePresence mode="wait">
             <motion.div
               key={isLogin ? 'login' : 'signup'}

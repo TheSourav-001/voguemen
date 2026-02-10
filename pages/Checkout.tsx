@@ -101,12 +101,15 @@ export const Checkout: React.FC = () => {
   return (
     <div className="pt-24 md:pt-40 pb-24 bg-offwhite min-h-screen">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8">
-        <div className="flex flex-col lg:flex-row gap-12">
+        <h1 className="text-3xl md:text-5xl font-black text-charcoal mb-8 md:mb-12 uppercase tracking-tight">Checkout</h1>
+
+        <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
 
           {/* Main Content */}
-          <div className="lg:w-2/3 space-y-8">
+          <div className="lg:w-2/3 space-y-6 md:space-y-8">
+
             {/* Stepper Header */}
-            <div className="flex items-center gap-4 mb-12">
+            <div className="flex items-center gap-2 md:gap-4 mb-8 md:mb-12">
               <button
                 onClick={() => setStep('shipping')}
                 className={`text-xs font-black uppercase tracking-[0.3em] flex items-center gap-2 ${step === 'shipping' ? 'text-primary' : 'text-charcoal/30'}`}
@@ -196,7 +199,7 @@ export const Checkout: React.FC = () => {
 
                   <p className="text-charcoal/40 text-xs font-bold uppercase tracking-widest mb-8">Select Your Preferred Payment Method</p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {PAYMENT_METHODS.map((method) => (
                       <button
                         key={method.id}
@@ -233,6 +236,30 @@ export const Checkout: React.FC = () => {
                         <div className="flex items-center gap-3 text-primary mb-2">
                           <CreditCard size={18} />
                           <span className="text-[10px] font-black uppercase tracking-widest">Card Details</span>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                          <div>
+                            <label className="block text-[10px] uppercase font-black tracking-widest text-charcoal/40 mb-2 md:mb-3">Full Name</label>
+                            <input
+                              type="text"
+                              placeholder="e.g. John Doe"
+                              name="fullName"
+                              // value={shippingAddress.fullName} // Assuming shippingAddress is defined elsewhere if needed
+                              // onChange={handleShippingChange} // Assuming handleShippingChange is defined elsewhere if needed
+                              className="w-full bg-offwhite border-2 border-transparent focus:border-primary/10 rounded-xl px-4 md:px-6 py-3 md:py-4 font-bold outline-none transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[10px] uppercase font-black tracking-widest text-charcoal/40 mb-2 md:mb-3">Phone Number</label>
+                            <input
+                              type="tel"
+                              placeholder="+880 1XXX XXXXXX"
+                              name="phone"
+                              // value={shippingAddress.phone} // Assuming shippingAddress is defined elsewhere if needed
+                              // onChange={handleShippingChange} // Assuming handleShippingChange is defined elsewhere if needed
+                              className="w-full bg-offwhite border-2 border-transparent focus:border-primary/10 rounded-xl px-4 md:px-6 py-3 md:py-4 font-bold outline-none transition-all"
+                            />
+                          </div>
                         </div>
                         <Input label="CARD NUMBER" placeholder="XXXX XXXX XXXX XXXX" />
                         <div className="grid grid-cols-2 gap-4">

@@ -80,12 +80,12 @@ export const ProductDetail: React.FC = () => {
 
           {/* Details */}
           <div className="flex flex-col justify-center">
-            <span className="text-primary font-black uppercase text-xs tracking-[0.3em] block mb-4">{product.category}</span>
-            <h1 className="text-4xl md:text-6xl font-black text-charcoal mb-8 leading-tight">{product.name}</h1>
+            <span className="text-primary font-black uppercase text-xs tracking-[0.3em] block mb-2 md:mb-4">{product.category}</span>
+            <h1 className="text-2xl md:text-6xl font-black text-charcoal mb-4 md:mb-8 leading-tight">{product.name}</h1>
 
-            <div className="flex items-center gap-6 mb-10">
-              <span className="text-4xl font-black text-primary">৳{product.price}</span>
-              <span className="text-xl text-charcoal/20 line-through">৳{Math.floor(product.price * 1.2)}</span>
+            <div className="flex items-center gap-4 md:gap-6 mb-6 md:mb-10">
+              <span className="text-3xl md:text-4xl font-black text-primary">৳{product.price}</span>
+              <span className="text-lg md:text-xl text-charcoal/20 line-through">৳{Math.floor(product.price * 1.2)}</span>
               <span className="bg-accent text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Sale</span>
             </div>
 
@@ -109,7 +109,7 @@ export const ProductDetail: React.FC = () => {
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`w-16 h-16 rounded-2xl border-2 font-black transition-all flex items-center justify-center ${selectedSize === size ? 'border-primary bg-primary text-white shadow-lg shadow-primary/30' : 'border-border text-charcoal/40 hover:border-charcoal'}`}
+                    className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl border-2 font-black transition-all flex items-center justify-center ${selectedSize === size ? 'border-primary bg-primary text-white shadow-lg shadow-primary/30' : 'border-border text-charcoal/40 hover:border-charcoal'}`}
                   >
                     {size}
                   </button>
@@ -131,8 +131,10 @@ export const ProductDetail: React.FC = () => {
               <AnimatedButton variant="secondary" fullWidth className="py-5 text-lg rounded-2xl" onClick={() => navigate('/cart')}>Buy It Now</AnimatedButton>
             </div>
 
+
+
             {/* Trust Badges */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-12 border-t border-border">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8 pt-8 md:pt-12 border-t border-border">
               <div className="flex items-center gap-4 group">
                 <div className="p-3 bg-primary/10 rounded-xl text-primary"><ShieldCheck size={20} /></div>
                 <span className="text-[10px] font-black text-charcoal/40 uppercase tracking-widest">Premium Quality</span>
@@ -232,6 +234,6 @@ export const ProductDetail: React.FC = () => {
           </div>
         )}
       </AnimatePresence>
-    </div>
+    </div >
   );
 };

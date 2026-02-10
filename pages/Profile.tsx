@@ -118,69 +118,51 @@ export const Profile: React.FC = () => {
             <div className="max-w-[1440px] mx-auto px-4 md:px-8">
 
                 {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-                    <div className="flex items-center gap-8">
-                        <div
-                            onClick={() => fileInputRef.current?.click()}
-                            className="w-24 h-24 md:w-32 md:h-32 rounded-3xl bg-primary flex items-center justify-center text-white shadow-2xl relative overflow-hidden group cursor-pointer"
-                        >
-                            {avatar ? (
-                                <img src={avatar} className="w-full h-full object-cover relative z-10" alt="Profile" />
-                            ) : (
-                                <User size={64} className="relative z-10" />
-                            )}
-
-                            {/* Hover Overlay */}
-                            <div className="absolute inset-0 bg-black/40 z-20 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2">
-                                <Camera size={24} className="text-white" />
-                                <span className="text-[10px] font-black uppercase text-white tracking-widest">Update</span>
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-8 mb-12 md:mb-16">
+                    <div className="flex items-center gap-4 md:gap-8">
+                        <div className="relative">
+                            <div className="w-20 h-20 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-2xl relative bg-offwhite group">
+                                {user?.avatar ? (
+                                    <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                                ) : (
+                                    <div className="w-full h-full bg-primary flex items-center justify-center text-white text-3xl md:text-5xl font-black">
+                                        {user?.name?.charAt(0) || user?.email?.charAt(0)}
+                                    </div>
+                                )}
+                                {/* Upload Overlay */}
+                                <label className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all cursor-pointer">
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        className="hidden"
+                                        onChange={handleFileChange}
+                                        disabled={isUploadingFile}
+                                    />
+                                    {isUploadingFile ? (
+                                        <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                    ) : (
+                                        <Camera size={24} className="text-white" />
+                                    )}
+                                </label>
                             </div>
-
-                            {isUploadingFile && (
-                                <div className="absolute inset-0 bg-primary/80 z-30 flex items-center justify-center">
-                                    <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                </div>
-                            )}
-
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                                className="absolute inset-0 border-2 border-white/20 rounded-full scale-150"
-                            />
+                            <div className="absolute -bottom-2 -right-2 bg-white p-2 rounded-xl shadow-lg">
+                                <div className="w-4 h-4 md:w-6 md:h-6 bg-accent rounded-full animate-pulse border-2 border-white" />
+                            </div>
                         </div>
                         <div>
-                            <motion.span
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                className="text-primary font-black uppercase tracking-[0.4em] text-[10px] mb-2 block"
-                            >
-                                Vogue Collective Member
-                            </motion.span>
-                            <h1 className="text-4xl md:text-6xl font-black text-charcoal tracking-tighter uppercase">
-                                {user?.name || user?.email.split('@')[0]}
-                            </h1>
-                            <p className="text-charcoal/40 text-sm font-bold mt-2 uppercase tracking-widest">{user?.email}</p>
+                            <h1 className="text-3xl md:text-6xl font-black text-charcoal uppercase tracking-tighter mb-2 md:mb-4">{user?.name || user?.email?.split('@')[0]}</h1>
+                            <p className="text-charcoal/40 font-bold uppercase tracking-widest text-[10px] md:text-sm">VogueMen Member Since 2024</p>
                         </div>
                     </div>
-                    <div className="flex gap-4">
-                        <button
-                            onClick={() => setActiveTab(activeTab === 'settings' ? 'profile' : 'settings')}
-                            className={`p-4 rounded-2xl transition-all ${activeTab === 'settings' ? 'bg-primary text-white' : 'bg-offwhite text-charcoal hover:text-primary'}`}
-                        >
-                            <Settings size={20} />
-                        </button>
-                        <button
-                            onClick={() => {
-                                logout();
-                                navigate('/');
-                            }}
-                            className="px-8 py-4 bg-accent text-white rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-charcoal transition-all shadow-xl shadow-accent/20 flex items-center gap-3"
-                        >
+                    <div className="flex gap-4 w-full md:w-auto">
+                        <button onClick={logout} className="flex-1 md:flex-none flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-offwhite rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-charcoal hover:text-white transition-all text-charcoal">
                             <LogOut size={16} /> Sign Out
+                        </button>
+                        <button onClick={() => setActiveTab('settings')} className="flex-1 md:flex-none flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-primary text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                            <Settings size={16} /> Settings
                         </button>
                     </div>
                 </div>
-
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
                     {/* Main Content */}
@@ -278,63 +260,46 @@ export const Profile: React.FC = () => {
                                         <Settings className="text-primary" size={32} /> Account Settings
                                     </h3>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div className="flex flex-col gap-2">
-                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-charcoal/40 ml-4">Full Name</label>
-                                            <div className="relative">
-                                                <User className="absolute left-6 top-1/2 -translate-y-1/2 text-charcoal/20" size={18} />
-                                                <input
-                                                    type="text"
-                                                    value={name}
-                                                    onChange={(e) => setName(e.target.value)}
-                                                    className="w-full bg-white border border-border rounded-2xl px-14 py-5 text-sm font-bold focus:outline-none focus:border-primary transition-all"
-                                                    placeholder="Enter your name"
-                                                />
-                                            </div>
-                                        </div>
+                                    <div className="relative">
+                                        <Camera className="absolute left-6 top-1/2 -translate-y-1/2 text-charcoal/20" size={18} />
+                                        <input
+                                            type="text"
+                                            value={avatar}
+                                            onChange={(e) => setAvatar(e.target.value)}
+                                            className="w-full bg-white border border-border rounded-2xl px-14 py-5 text-sm font-bold focus:outline-none focus:border-primary transition-all"
+                                            placeholder="Profile Image URL"
+                                        />
+                                    </div>
 
-                                        <div className="flex flex-col gap-2">
-                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-charcoal/40 ml-4">Avatar URL</label>
-                                            <div className="relative">
-                                                <Camera className="absolute left-6 top-1/2 -translate-y-1/2 text-charcoal/20" size={18} />
-                                                <input
-                                                    type="text"
-                                                    value={avatar}
-                                                    onChange={(e) => setAvatar(e.target.value)}
-                                                    className="w-full bg-white border border-border rounded-2xl px-14 py-5 text-sm font-bold focus:outline-none focus:border-primary transition-all"
-                                                    placeholder="Profile Image URL"
-                                                />
-                                            </div>
-                                        </div>
 
-                                        <div className="flex flex-col gap-2">
-                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-charcoal/40 ml-4">Phone Number</label>
-                                            <div className="relative">
-                                                <Phone className="absolute left-6 top-1/2 -translate-y-1/2 text-charcoal/20" size={18} />
-                                                <input
-                                                    type="text"
-                                                    value={phone}
-                                                    onChange={(e) => setPhone(e.target.value)}
-                                                    className="w-full bg-white border border-border rounded-2xl px-14 py-5 text-sm font-bold focus:outline-none focus:border-primary transition-all"
-                                                    placeholder="+880 1XXX-XXXXXX"
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div className="flex flex-col gap-2">
-                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-charcoal/40 ml-4">Shipping Address</label>
-                                            <div className="relative">
-                                                <MapPin className="absolute left-6 top-1/2 -translate-y-1/2 text-charcoal/20" size={18} />
-                                                <input
-                                                    type="text"
-                                                    value={address}
-                                                    onChange={(e) => setAddress(e.target.value)}
-                                                    className="w-full bg-white border border-border rounded-2xl px-14 py-5 text-sm font-bold focus:outline-none focus:border-primary transition-all"
-                                                    placeholder="City, Area, House No."
-                                                />
-                                            </div>
+                                    <div className="flex flex-col gap-2">
+                                        <label className="text-[10px] font-black uppercase tracking-[0.2em] text-charcoal/40 ml-4">Phone Number</label>
+                                        <div className="relative">
+                                            <Phone className="absolute left-6 top-1/2 -translate-y-1/2 text-charcoal/20" size={18} />
+                                            <input
+                                                type="text"
+                                                value={phone}
+                                                onChange={(e) => setPhone(e.target.value)}
+                                                className="w-full bg-white border border-border rounded-2xl px-14 py-5 text-sm font-bold focus:outline-none focus:border-primary transition-all"
+                                                placeholder="+880 1XXX-XXXXXX"
+                                            />
                                         </div>
                                     </div>
+
+                                    <div className="flex flex-col gap-2">
+                                        <label className="text-[10px] font-black uppercase tracking-[0.2em] text-charcoal/40 ml-4">Shipping Address</label>
+                                        <div className="relative">
+                                            <MapPin className="absolute left-6 top-1/2 -translate-y-1/2 text-charcoal/20" size={18} />
+                                            <input
+                                                type="text"
+                                                value={address}
+                                                onChange={(e) => setAddress(e.target.value)}
+                                                className="w-full bg-white border border-border rounded-2xl px-14 py-5 text-sm font-bold focus:outline-none focus:border-primary transition-all"
+                                                placeholder="City, Area, House No."
+                                            />
+                                        </div>
+                                    </div>
+
 
                                     <div className="mt-12 flex gap-4">
                                         <AnimatedButton
@@ -490,8 +455,8 @@ export const Profile: React.FC = () => {
                             </div>
                         )}
                     </div>
-                </div>
-            </div>
-        </div>
+                </div >
+            </div >
+        </div >
     );
 };

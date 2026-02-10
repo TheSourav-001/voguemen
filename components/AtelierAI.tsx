@@ -70,30 +70,18 @@ export const AtelierAI: React.FC = () => {
                         <Sparkles size={24} className="hidden group-hover:block" />
                     </>
                 )}
-                <AnimatePresence>
-                    {!isOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            className="absolute right-20 bg-white text-primary px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest whitespace-nowrap shadow-xl border border-primary/10"
-                        >
-                            Atelier AI Stylist
-                        </motion.div>
-                    )}
-                </AnimatePresence>
             </motion.button>
 
-            {/* Chat Window */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 50, scale: 0.9 }}
-                        className="fixed bottom-28 right-8 z-[100] w-[400px] h-[600px] bg-white rounded-3xl shadow-3xl border border-border overflow-hidden flex flex-col"
+                        exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                        className="fixed bottom-20 md:bottom-8 right-4 md:right-8 w-[calc(100vw-2rem)] md:w-[400px] h-[70vh] md:h-[600px] bg-white rounded-3xl shadow-2xl z-50 overflow-hidden flex flex-col font-sans border border-border"
                     >
                         {/* Header */}
-                        <div className="bg-primary p-6 text-white flex items-center justify-between">
+                        <div className="bg-charcoal text-white p-4 md:p-6 flex justify-between items-center flex-shrink-0">
                             <div className="flex items-center gap-4">
                                 <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center"><Sparkles size={20} /></div>
                                 <div>

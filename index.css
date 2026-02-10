@@ -11,8 +11,19 @@
     height: 100vh;
     margin: 0 !important;
     padding: 0 !important;
-    overflow: hidden !important;
+    overflow-x: hidden !important;
+    /* Prevent horizontal scroll on mobile */
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    /* Remove tap highlight on mobile */
   }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
 
   body * {
     visibility: hidden !important;

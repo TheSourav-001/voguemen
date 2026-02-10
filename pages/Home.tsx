@@ -80,7 +80,7 @@ export const Home: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-white text-6xl md:text-9xl font-black mb-8 uppercase tracking-tighter"
+            className="text-white text-4xl md:text-9xl font-black mb-4 md:mb-8 uppercase tracking-tighter"
           >
             VOGUE<span className="text-primary">MEN</span>
           </motion.h1>
@@ -123,7 +123,7 @@ export const Home: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="max-w-[1440px] mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12"
+          className="max-w-[1440px] mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12"
         >
           <Badge icon={<ShieldCheck size={32} />} title="Artisan Built" sub="Premium Quality Control" />
           <Badge icon={<Truck size={32} />} title="Express DHAKA" sub="Same Day Delivery" />
@@ -142,8 +142,8 @@ export const Home: React.FC = () => {
           className="flex justify-between items-end mb-16"
         >
           <div>
-            <h2 className="text-4xl font-black text-charcoal uppercase mb-2">The Collections</h2>
-            <div className="h-1.5 w-24 bg-primary rounded-full" />
+            <h2 className="text-2xl md:text-4xl font-black text-charcoal uppercase mb-2">The Collections</h2>
+            <div className="h-1.5 w-16 md:w-24 bg-primary rounded-full" />
           </div>
           <Link to="/shop" className="text-primary font-black text-sm uppercase tracking-widest flex items-center gap-2 group">
             Explore All <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
@@ -155,7 +155,7 @@ export const Home: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={staggerContainer}
-          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8"
+          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-8"
         >
           {CATEGORIES.slice(0, 12).map((cat, i) => (
             <motion.div
@@ -199,7 +199,7 @@ export const Home: React.FC = () => {
             className="text-center mb-16"
           >
             <span className="text-primary font-black uppercase tracking-widest text-xs mb-4 block">Seasonal Selection</span>
-            <h2 className="text-5xl font-black text-charcoal uppercase tracking-tighter">New Arrivals</h2>
+            <h2 className="text-3xl md:text-5xl font-black text-charcoal uppercase tracking-tighter">New Arrivals</h2>
           </motion.div>
 
           <motion.div
@@ -207,7 +207,7 @@ export const Home: React.FC = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12"
           >
             {newArrivals.map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
@@ -251,8 +251,8 @@ export const Home: React.FC = () => {
             transition={{ duration: 1, ease: "easeOut" }}
             className="lg:w-1/2"
           >
-            <h2 className="text-5xl md:text-7xl font-black text-charcoal uppercase mb-12 leading-tight">Heritage Meets <span className="text-primary">Precision</span></h2>
-            <p className="text-charcoal/60 text-xl leading-relaxed mb-10 font-medium">
+            <h2 className="text-3xl md:text-7xl font-black text-charcoal uppercase mb-6 md:mb-12 leading-tight">Heritage Meets <span className="text-primary">Precision</span></h2>
+            <p className="text-charcoal/60 text-base md:text-xl leading-relaxed mb-6 md:mb-10 font-medium">
               VogueMen is not just a brand; it's a movement to elevate Bangladeshi craftsmanship. Every piece in our Atelier collection is hand-finished by master tailors with over 30 years of experience in luxury garments.
             </p>
             <ul className="space-y-6 mb-12 text-charcoal font-black uppercase text-sm tracking-widest">

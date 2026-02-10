@@ -29,13 +29,13 @@ export const Navbar: React.FC = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-xl shadow-2xl py-2' : 'bg-white py-4'}`}>
       {/* Top Banner */}
-      <div className="bg-charcoal text-white text-[9px] text-center py-1.5 font-black uppercase tracking-[0.5em] relative z-50">
+      <div className="bg-charcoal text-white text-[8px] md:text-[9px] text-center py-1.5 font-black uppercase tracking-[0.2em] md:tracking-[0.5em] relative z-50 px-2 leading-tight">
         Free Express Delivery Across Bangladesh | Join The Vogue Collective For 10% Off
       </div>
 
       <div className="max-w-[1440px] mx-auto px-4 md:px-8 flex items-center justify-between gap-4 md:gap-12 mt-2">
         {/* Logo */}
-        <Link to="/" className="text-2xl md:text-3xl font-black text-primary flex-shrink-0 tracking-tighter">
+        <Link to="/" className="text-xl md:text-3xl font-black text-primary flex-shrink-0 tracking-tighter">
           VOGUE<span className="text-charcoal">MEN</span>
         </Link>
 
@@ -86,20 +86,20 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Icons */}
-        <div className="flex items-center gap-6 md:gap-8 flex-shrink-0">
+        <div className="flex items-center gap-4 md:gap-8 flex-shrink-0">
           <Link to="/profile" className="hidden sm:block text-charcoal hover:text-primary transition-all">
-            <User size={22} className={isLoggedIn ? "text-primary" : ""} />
+            <User size={20} className={isLoggedIn ? "text-primary" : ""} />
           </Link>
           {isLoggedIn && (
             <Link to="/cart" className="relative text-charcoal hover:text-primary transition-all group">
-              <ShoppingCart size={24} />
+              <ShoppingCart size={22} />
               <AnimatePresence>
                 {totalItems > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
-                    className="absolute -top-2 -right-2 bg-accent text-white text-[9px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-lg border-2 border-white"
+                    className="absolute -top-2 -right-2 bg-accent text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-lg border-2 border-white"
                   >
                     {totalItems}
                   </motion.span>
@@ -123,8 +123,8 @@ export const Navbar: React.FC = () => {
               The Atelier Login
             </Link>
           )}
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden text-charcoal p-2 bg-offwhite rounded-xl">
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden text-charcoal p-1.5 bg-offwhite rounded-lg">
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
@@ -136,9 +136,19 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 100 }}
-            className="fixed inset-0 top-[100px] bg-white z-40 lg:hidden flex flex-col p-8 gap-6 font-black text-2xl uppercase tracking-tighter overflow-y-auto pb-24"
+            className="fixed inset-0 top-[85px] bg-white z-40 lg:hidden flex flex-col p-6 gap-6 font-black text-xl uppercase tracking-tighter overflow-y-auto pb-32"
           >
-            <div className="mb-8">
+            {/* Mobile Search */}
+            <div className="md:hidden relative mb-2">
+              <input
+                type="text"
+                placeholder="Search collection..."
+                className="w-full bg-offwhite border-2 border-transparent px-4 py-3 rounded-xl text-xs font-black uppercase tracking-widest focus:outline-none focus:border-primary/20 transition-all"
+              />
+              <Search size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-charcoal/20" />
+            </div>
+
+            <div className="mb-4">
               <h4 className="text-[10px] text-charcoal/30 tracking-[0.4em] mb-4">Discovery</h4>
               <Link to="/shop" className="block mb-4">The Atelier</Link>
               <Link to="/lookbook" className="block mb-4">Lookbook</Link>
