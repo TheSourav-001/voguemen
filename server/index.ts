@@ -16,6 +16,7 @@ dotenv.config();
 
 const prisma = new PrismaClient();
 const app = express();
+app.set('trust proxy', 1); // Trust first proxy for correct protocol (https) on Render
 const PORT = process.env.PORT || 5001;
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret';
 
@@ -197,7 +198,8 @@ app.post('/api/user/upload', authenticateToken, upload.single('avatar'), (req: a
             return res.status(400).json({ error: 'No file uploaded' });
         }
         const filePath = `/uploads/${req.file.filename}`;
-        res.json({ url: `http://localhost:5000${filePath}` });
+        const baseUrl = `${req.protocol}://${req.get('host')}`;
+        res.json({ url: `${baseUrl}${filePath}` });
     } catch (error) {
         console.error('Upload error:', error);
         res.status(500).json({ error: 'Internal server error' });

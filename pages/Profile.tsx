@@ -123,7 +123,7 @@ export const Profile: React.FC = () => {
                         <div className="relative">
                             <div className="w-20 h-20 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-2xl relative bg-offwhite group">
                                 {user?.avatar ? (
-                                    <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                                    <img src={avatar || user?.avatar} alt={user.name} className="w-full h-full object-cover" />
                                 ) : (
                                     <div className="w-full h-full bg-primary flex items-center justify-center text-white text-3xl md:text-5xl font-black">
                                         {user?.name?.charAt(0) || user?.email?.charAt(0)}
